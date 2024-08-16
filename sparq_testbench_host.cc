@@ -6,18 +6,20 @@
 
 extern vluint64_t main_cycle;
 
-void SparqTestBench::Control_WaitforIdle(uint32_t type)  {
-  wait_host_command_flush();
-
+void SparqTestBench::Control_Wait(uint32_t cycles)  {
   CommandDataPort command;
   command.valid = 1;
   command.command = 0;
   command.command_data0 = 0;
   command.command_data1 = 0;
-  host_setcommand(COMMAND_TYPE_COMMANDDATAPORT,command);
-  host_setcommand(COMMAND_TYPE_COMMANDDATAPORT,command);
-  host_setcommand(COMMAND_TYPE_COMMANDDATAPORT,command);
-  host_setcommand(COMMAND_TYPE_COMMANDDATAPORT,command);
+  for(int i = 0; i < cycles; i ++)
+    host_setcommand(COMMAND_TYPE_COMMANDDATAPORT,command);
+}
+
+void SparqTestBench::Control_WaitforIdle(uint32_t type)  {
+  wait_host_command_flush();
+
+  Control_Wait(4);
 
   wait_host_command_flush();
 
@@ -253,7 +255,6 @@ void SparqTestBench::gemm(uint32_t dim_1, uint32_t dim_2,uint32_t dim_3, uint32_
         dim_1
       );
     }
-
     Control_Store_C(
       addrC + out_i * ARRAY_DIMENSION * sizeof(uint16_t),
       ARRAY_DIMENSION * sizeof(uint16_t),  
@@ -270,7 +271,7 @@ void SparqTestBench::host_function()  {
 
   CommandDataPort command;
 
-  usleep(10000);
+  Control_Wait(100);
 
   command.valid = 1;  
   command.command = COMMAND_PE_RESET;

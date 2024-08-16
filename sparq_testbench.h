@@ -182,6 +182,7 @@ class SparqTestBench {
     
     void Control_GEMM(uint32_t  buffer_a_base_addr, uint32_t  buffer_b_base_addr, uint32_t  buffer_c_base_addr, uint32_t  reset_accum, uint32_t  buffer_a_size);
        
+    void Control_Wait(uint32_t cycles);
     void Control_WaitforIdle(uint32_t type);
       
   public:

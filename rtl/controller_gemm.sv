@@ -59,6 +59,8 @@ import SPARQ_PKG::*;
     PE_C_Inter_Req Cside_inter_req;
 
     logic [PE_COMMAND_WIDTH-1:0] pre_Cside_out_command;
+
+    logic[1:0] accum_in_progress_mode;
   } Registers;
     
   Registers reg_current,reg_next;
@@ -84,8 +86,9 @@ import SPARQ_PKG::*;
 
   logic pein_in_progress_fifo_in;
   logic accum_in_progress_fifo_in;
+  logic accum_in_progress_delayed;
   FifoBuffer #(.DATA_SIZE(1), .CYCLES(1) )    pein_in_progress_delay (.clk(clk), .in(pein_in_progress_fifo_in), .out(pein_in_progress));
-  FifoBuffer #(.DATA_SIZE(1), .CYCLES(1) )    accum_in_progress_delay (.clk(clk), .in(accum_in_progress_fifo_in), .out(accum_in_progress));
+  FifoBuffer #(.DATA_SIZE(1), .CYCLES(ARRAY_DIMENSION+ADDER_DELAY+3) )    accum_in_progress_delay (.clk(clk), .in(accum_in_progress_fifo_in), .out(accum_in_progress_delayed));
   
   logic Cside_inter_req_valid_in;
   logic Cside_inter_req_valid_delayed;
@@ -133,6 +136,7 @@ import SPARQ_PKG::*;
 
       reg_next.pein_state = STATE_WORKING;
       reg_next.accum_state = STATE_WORKING;
+      reg_next.accum_in_progress_mode = 1;
 
       reg_next.B_load_offset = 0;
       reg_next.A_in_offset = 0;
@@ -214,6 +218,17 @@ import SPARQ_PKG::*;
         accumulator_wren_fifo_in = 1;
       end
     end
+    if(reg_current.accum_in_progress_mode==1) begin
+      if (accum_in_progress_delayed == 1) begin
+        reg_next.accum_in_progress_mode = 2;
+      end
+    end
+    if(reg_current.accum_in_progress_mode==2) begin
+      if (accum_in_progress_delayed == 0) begin
+        reg_next.accum_in_progress_mode = 0;
+      end
+    end
+    accum_in_progress = reg_current.accum_in_progress_mode >= 1 ? 1:0;
 
 
     Cside_inter_req.valid   = Cside_inter_req_valid_delayed;
@@ -241,6 +256,7 @@ import SPARQ_PKG::*;
       reg_next.commanddataport = '{default:'0};
       reg_next.pein_state = 0;
       reg_next.accum_state = 0;
+      reg_next.accum_in_progress_mode = 0;
     end
   end
     
