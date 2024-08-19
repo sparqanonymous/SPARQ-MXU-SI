@@ -79,7 +79,7 @@ void SparqTestBench::Control_Load_A(uint32_t axi_addr, uint32_t size, uint32_t c
   command.command_data1 = interval;
   host_setcommand(COMMAND_TYPE_COMMANDDATAPORT,command);
   
-  usleep(10000);
+  Control_Wait(4);
   
   std::cout << "As cycle: " << main_cycle <<std::endl;
   Control_WaitforIdle(WAIT_STATE_AXI_A_IN);    
@@ -105,7 +105,7 @@ void SparqTestBench::Control_Load_A_meta(uint32_t axi_addr, uint32_t size, uint3
   command.command_data1 = interval;
   host_setcommand(COMMAND_TYPE_COMMANDDATAPORT,command);
   
-  usleep(10000);
+  Control_Wait(4);
   
   std::cout << "As cycle: " << main_cycle <<std::endl;
   Control_WaitforIdle(WAIT_STATE_AXI_A_META_IN);    
@@ -132,7 +132,7 @@ void SparqTestBench::Control_Load_B(uint32_t axi_addr, uint32_t size, uint32_t c
   command.command_data1 = interval;
   host_setcommand(COMMAND_TYPE_COMMANDDATAPORT,command);
   
-  usleep(10000);
+  Control_Wait(4);
   
   std::cout << "As cycle: " << main_cycle <<std::endl;
   Control_WaitforIdle(WAIT_STATE_AXI_B_IN);    
@@ -157,7 +157,7 @@ void SparqTestBench::Control_Load_C(uint32_t axi_addr, uint32_t size, uint32_t c
   command.command_data1 = interval;
   host_setcommand(COMMAND_TYPE_COMMANDDATAPORT,command);
   
-  usleep(10000);
+  Control_Wait(4);
   
   std::cout << "As cycle: " << main_cycle <<std::endl;
   Control_WaitforIdle(WAIT_STATE_AXI_C_IN);    
@@ -262,6 +262,7 @@ void SparqTestBench::gemm(uint32_t dim_1, uint32_t dim_2,uint32_t dim_3, uint32_
       dim_3 * sizeof (uint16_t),
       0
     ); 
+    Control_Wait(ARRAY_DIMENSION);
   }
 }
 
@@ -271,14 +272,13 @@ void SparqTestBench::host_function()  {
 
   CommandDataPort command;
 
-  Control_Wait(100);
+  Control_Wait(200+ARRAY_DIMENSION);
 
   command.valid = 1;  
   command.command = COMMAND_PE_RESET;
   host_setcommand(COMMAND_TYPE_COMMANDDATAPORT,command);
 
-
-  usleep(1000);
+  Control_Wait(ARRAY_DIMENSION);
   
   gemm(DIM_1,DIM_2,DIM_3,DRAM_ADDR_A,DRAM_ADDR_B,DRAM_ADDR_C,DRAM_ADDR_A_META);
   

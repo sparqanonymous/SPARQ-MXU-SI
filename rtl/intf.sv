@@ -6,8 +6,8 @@ package SPARQ_PKG;
 
 localparam ARRAY_DIMENSION = 8;
 
-localparam IN_BUFFER_SIZE    = 32'h1000;
-localparam OUT_BUFFER_SIZE   = 32'h1000;
+localparam IN_BUFFER_SIZE    = 32'h10000;
+localparam OUT_BUFFER_SIZE   = 32'h10000;
 
 localparam QSIZE=8;
 localparam FSIZE=32;

@@ -15,10 +15,10 @@
 
 #include "defines.h"
 
-#define DRAM_ADDR_A 0x1000
-#define DRAM_ADDR_B 0x2000
-#define DRAM_ADDR_C 0x3000
-#define DRAM_ADDR_A_META 0x4000
+#define DRAM_ADDR_A 0x100000
+#define DRAM_ADDR_B 0x200000
+#define DRAM_ADDR_C 0x300000
+#define DRAM_ADDR_A_META 0x400000
 #define DIM_1 16
 #define DIM_2 16
 #define DIM_3 16
