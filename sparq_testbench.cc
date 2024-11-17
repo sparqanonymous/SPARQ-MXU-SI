@@ -3,7 +3,6 @@
 #include "Vsparq_top.h"
 #include <iostream>
 
-
 void SparqTestBench::host_getstates(int type) {
   mtx.lock();
   mtx.unlock();

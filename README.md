@@ -1,9 +1,8 @@
 # SPARQ MXU-SI
-
-* Needs Verilator
-
+* Source code for "SPARQ: An Accelerator Architecture for Large Language Models with Joint Sparsity and Quantization Techniques"
 
 ## build
+* Needs Verilator
 ```console
 make
 ```
@@ -12,4 +11,5 @@ make
 ```console
 make run
 ```
+
 

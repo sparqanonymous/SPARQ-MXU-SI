@@ -4,6 +4,7 @@
 import SPARQ_PKG::*;
 
 
+
 module FifoBuffer #(
 		parameter DATA_SIZE     = FSIZE,
 		parameter integer CYCLES        = 2

@@ -2,7 +2,6 @@
 
 `include "defines.vh"
 
-
 import SPARQ_PKG::*;
 
 module InterPEBuffer #(

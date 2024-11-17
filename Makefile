@@ -10,6 +10,7 @@ VERILATOR_FLAGS +=  -CFLAGS "-g -std=c++11"
 
 output=obj_dir/V$(TOP_MODULE)
 
+
 default: $(output)
 
 SOURCE_FILES = \

@@ -3,7 +3,6 @@
 
 #include "sparq_testbench.h"
 
-
 #if VM_TRACE
 # include <verilated_vcd_c.h>
 #endif

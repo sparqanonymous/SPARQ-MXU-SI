@@ -3,6 +3,7 @@
 `include "defines.vh"
 import SPARQ_PKG::*;
 
+
 (* use_dsp = "no" *) module Controller  (
     input rstn,
     input clk,

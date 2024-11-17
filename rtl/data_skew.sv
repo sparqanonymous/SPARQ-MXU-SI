@@ -5,6 +5,7 @@
 
 import SPARQ_PKG::*;
 
+
 module pe_in_pipe #(
 		parameter DATA_SIZE     = FLOAT_SIZE,
 		parameter integer CYCLES        = 2

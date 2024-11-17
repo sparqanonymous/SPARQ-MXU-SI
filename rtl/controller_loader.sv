@@ -3,6 +3,7 @@
 `include "defines.vh"
 import SPARQ_PKG::*;
 
+
 (* use_dsp = "no" *) module Buffer_Load_Controller  #(
 		parameter BUFFER_SIZE = IN_BUFFER_SIZE,
 		parameter COMMAND_AXI_LOAD0 = COMMAND_AXI_A_LOAD0,

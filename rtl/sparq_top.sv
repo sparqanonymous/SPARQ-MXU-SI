@@ -3,6 +3,7 @@
 `include "defines.vh"
 import SPARQ_PKG::*;
 
+
 module sparq_top #(
         parameter SIM_MODE        = 0
 	) (

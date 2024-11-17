@@ -5,7 +5,6 @@ import SPARQ_PKG::*;
 
 
 
-
 module accumulator_array #(
 		parameter NUM_DATA = ARRAY_DIMENSION
 	) (	

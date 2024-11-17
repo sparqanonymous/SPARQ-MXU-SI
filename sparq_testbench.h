@@ -4,7 +4,6 @@
 #include <verilated.h>
 #include "Vsparq_top.h"
 
-
 #include <queue>
 #include <map>
 #include <vector>

@@ -6,6 +6,7 @@
 import SPARQ_PKG::*;
 
 
+
 module BufferRAMT #(
   parameter ID      = 0,
   parameter DEPTH   = 512,

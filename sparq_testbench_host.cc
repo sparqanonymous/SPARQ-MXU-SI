@@ -4,6 +4,7 @@
 #include <random>
 #include <cmath>
 
+
 extern vluint64_t main_cycle;
 
 void SparqTestBench::Control_Wait(uint32_t cycles)  {

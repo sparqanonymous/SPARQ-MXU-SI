@@ -2,6 +2,7 @@
 
 `include "defines.vh"
 
+
 package SPARQ_PKG;
 
 localparam ARRAY_DIMENSION = 8;

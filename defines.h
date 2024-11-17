@@ -1,6 +1,7 @@
 #ifndef __SPARQ_VERILATOR_DEFINES_H__
 #define __SPARQ_VERILATOR_DEFINES_H__
 
+
 #define CEILDIV(x,y) (((x) + (y) -1)/(y))
 #define MAX(x,y) ( ( (x) > (y) ) ? (x) : (y) )
 #define MIN(x,y) ( ( (x) < (y) ) ? (x) : (y) )
