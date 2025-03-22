@@ -1,4 +1,4 @@
-`ifndef __DEFINES_VH__
+`ifndef __DEFINES_VH__ 
 `define __DEFINES_VH__
 
 `define CEIL(x,y) (((x) + (y) -1)/(y))

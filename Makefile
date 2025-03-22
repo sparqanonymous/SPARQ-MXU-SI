@@ -1,4 +1,4 @@
-VERILATOR_FLAGS =
+VERILATOR_FLAGS = 
 VERILATOR_FLAGS += -cc --exe
 VERILATOR_FLAGS += -O2 -x-assign 0
 VERILATOR_FLAGS += --trace --trace-structs

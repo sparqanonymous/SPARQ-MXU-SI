@@ -1,2 +1,2 @@
-+librescan +libext+.v+.sv+.vh -y . -y rtl/ 
++librescan +libext+.v+.sv+.vh -y . -y rtl/  
 

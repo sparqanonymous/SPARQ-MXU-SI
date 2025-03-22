@@ -1,4 +1,4 @@
-#ifndef __SPARQ_TESTBENCH_H__
+#ifndef __SPARQ_TESTBENCH_H__ 
 #define __SPARQ_TESTBENCH_H__
 
 #include <verilated.h>
